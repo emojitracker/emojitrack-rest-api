@@ -8,7 +8,7 @@ group :api do
   gem 'emoji_data', '~> 0.2.0'
 
   gem 'sinatra', '~> 1.4.6'
-  gem 'unicorn', '~> 4.8.3'
+  gem 'puma', '~> 3.6.0'
   gem 'dalli', '~> 2.7.4'
   gem 'rack-cache', '~> 1.5.1'
   gem 'rack-timeout', '~> 0.3.2'
