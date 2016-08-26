@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require 'oj'
-require_relative 'lib/config'
 
 class WebAdmin < Sinatra::Base
 
