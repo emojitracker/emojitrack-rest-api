@@ -12,18 +12,6 @@ VERBOSE = to_boolean(ENV["VERBOSE"]) || false
 # db setup -- checks for REDIS_URL by default, or fallback to localhost
 REDIS = Redis.new()
 
-# api server setup
-def web_api_uri
-  # allow to be manually specified in env, which will always override
-  return ENV['WEB_API_URI'] if ENV['WEB_API_URI']
-  # otherwise, use defaults
-  return "http://www.emojitracker.com/api" if is_development_frontend_only?
-  "/api"
-end
-
-# stream server setup
-STREAM_SERVER = ENV['STREAM_SERVER'] || 'http://stream.emojitracker.com'
-
 # environment checks
 def is_production?
   ENV["RACK_ENV"] == 'production'
