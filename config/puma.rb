@@ -7,6 +7,7 @@ preload_app!
 rackup      DefaultRackup
 port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
+quiet       ENV['QUIET']    || false
 
 # on_worker_boot do
 # end

@@ -12,8 +12,6 @@ if memcache_servers = ENV["MEMCACHIER_SERVERS"]
     entitystore: "memcached://#{memcache_servers}"
 end
 
-$stdout.sync = true
-
 # deflate output for bandwidth savings
 use Rack::Deflater
 
