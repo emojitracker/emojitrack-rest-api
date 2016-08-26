@@ -1,4 +1,3 @@
-require 'rack-timeout'
 require 'rack-cache'
 require 'dalli'
 require 'memcachier'
@@ -17,10 +16,6 @@ $stdout.sync = true
 # deflate output for bandwidth savings
 use Rack::Deflater
 
-# set a timeout for slow connections to not use up dyno slots
-# unicorn will have this set too, so this number should be lower than unicorns
-use Rack::Timeout
-Rack::Timeout.timeout = 10
 
 require "./lib/config"
 require "./web_api"
