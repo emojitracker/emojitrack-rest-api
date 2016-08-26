@@ -1,5 +1,4 @@
 require 'redis'
-require 'uri'
 require 'socket'
 
 #convenience method for reading booleans from env vars
@@ -10,9 +9,8 @@ end
 # verbose mode or no
 VERBOSE = to_boolean(ENV["VERBOSE"]) || false
 
-# db setup
-REDIS_URI = URI.parse(ENV["REDIS_URL"] || ENV["REDISCLOUD_URL"] || ENV["REDISTOGO_URL"] || ENV["BOXEN_REDIS_URL"] || "redis://localhost:6379")
-REDIS = Redis.new(:host => REDIS_URI.host, :port => REDIS_URI.port, :password => REDIS_URI.password, :driver => :hiredis)
+# db setup -- checks for REDIS_URL by default, or fallback to localhost
+REDIS = Redis.new()
 
 # api server setup
 def web_api_uri
