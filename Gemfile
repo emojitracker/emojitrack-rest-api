@@ -4,7 +4,7 @@ ruby '2.3.1'
 group :api do
   gem 'redis', '~> 3.0.7'
   gem 'hiredis', '~> 0.6.0'
-  gem 'oj', '~> 2.9.9'
+  gem 'oj', '~> 2.17.3'
   gem 'emoji_data', '~> 0.2.0'
 
   gem 'sinatra', '~> 1.4.6'

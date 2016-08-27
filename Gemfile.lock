@@ -6,7 +6,7 @@ GEM
     hiredis (0.6.1)
     memcachier (0.0.2)
     newrelic_rpm (3.16.2.321)
-    oj (2.9.9)
+    oj (2.17.3)
     puma (3.6.0)
     rack (1.6.4)
     rack-cache (1.6.1)
@@ -29,7 +29,7 @@ DEPENDENCIES
   hiredis (~> 0.6.0)
   memcachier (~> 0.0.2)
   newrelic_rpm
-  oj (~> 2.9.9)
+  oj (~> 2.17.3)
   puma (~> 3.6.0)
   rack-cache (~> 1.6.1)
   redis (~> 3.0.7)
