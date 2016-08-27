@@ -11,7 +11,6 @@ group :api do
   gem 'puma', '~> 3.6.0'
   gem 'dalli', '~> 2.7.4'
   gem 'rack-cache', '~> 1.6.1'
-  gem 'memcachier', '~> 0.0.2'
 end
 
 group :production do

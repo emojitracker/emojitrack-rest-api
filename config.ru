@@ -1,15 +1,18 @@
 require 'rack-cache'
 require 'dalli'
-require 'memcachier'
 require 'redis'
 
-# Defined in ENV on Heroku. To try locally, start memcached and uncomment:
-# ENV["MEMCACHIER_SERVERS"] = "localhost"
-if memcache_servers = ENV["MEMCACHIER_SERVERS"]
+
+if memcache_servers = ENV['MEMCACHIER_SERVERS']
+  cache = Dalli::Client.new memcache_servers.split(','), {
+    username: ENV['MEMCACHIER_USERNAME'],
+    password: ENV['MEMCACHIER_PASSWORD']
+  }
+
   use Rack::Cache,
     verbose: true,
-    metastore:   "memcached://#{memcache_servers}",
-    entitystore: "memcached://#{memcache_servers}"
+    metastore: cache,
+    entitystore: cache
 end
 
 # deflate output for bandwidth savings
