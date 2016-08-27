@@ -1,5 +1,5 @@
 # emojitrack-rest-api :dizzy:
-emojitrack tracks realtime emoji usage on twitter!
+emojitracker tracks realtime emoji usage on twitter!
 
 This is but a small part of emojitracker's infrastructure.  For the full stack,
 take a look at https://github.com/mroth/emojitracker.
@@ -8,7 +8,28 @@ take a look at https://github.com/mroth/emojitracker.
 ## emojitrack-rest-api
 This is the main web app for the Emojitracker REST API.
 
-_NOT YET BEING USED IN PRODUCTION -- SEE `emojitrack-web` FOR NOW._
+_NOT YET BEING USED IN PRODUCTION YET — SEE `emojitrack-web` FOR NOW._
+
+### API specification
+_Read this first and be sure you understand it:_ The REST API should only be
+used to establish initial page state, for subsequent updates use the
+Emojitracker Streaming API.
+
+**IF YOU ARE POLLING REGULARLY FOR UPDATES, YOU ARE DOING SOMETHING WRONG AND
+YOU ARE A BAD PERSON.**
+
+All REST endpoints honor `Accept-Encoding: gzip`.
+
+#### `GET /v1/rankings`
+Returns every emoji in ranked order with scores.
+[Sample response](http://emojitracker.com/api/rankings)
+
+#### `GET /v1/details/:id`
+Returns the details of a particular emoji, including a small number of the
+most recent [ensmallened](#) tweets.
+[Sample response](http://emojitracker.com/api/details/2665)
+
+...more docs to come.
 
 ### Development Setup
 
