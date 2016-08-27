@@ -1,0 +1,6 @@
+# ignore all dotfiles (.env, .git, .bundle, etc)!
+.*
+
+# ignore docker workflow itself
+Dockerfile
+docker-compose.yml

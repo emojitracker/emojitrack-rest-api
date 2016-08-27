@@ -1,0 +1,23 @@
+version: '2'
+services:
+  web:
+    build: .
+    image: emojitracker/rest-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - PORT=8000
+      - RACK_ENV=development
+      - MEMCACHIER_SERVERS=memcache
+      - REDIS_URL
+    depends_on:
+      - memcache
+      - redis
+
+  redis:
+    image: redis
+
+  memcache:
+    image: memcached:alpine
