@@ -10,6 +10,7 @@ group :api do
   gem 'sinatra', '~> 1.4.6'
   gem 'puma', '~> 3.6.0'
   gem 'dalli', '~> 2.7.4'
+  gem 'kgio', '~> 2.10.0'
   gem 'rack-cache', '~> 1.6.1'
 end
 
