@@ -11,9 +11,15 @@ services:
       - PORT=8000
       - RACK_ENV=development
       - MEMCACHIER_SERVERS=memcache
-      - REDIS_URL
+      - REDIS_URL=redis://redis:6379
     depends_on:
       - memcache
+      - redis
+
+  feeder:
+    image: emojitracker/fakefeeder
+    command: ["-target=redis://redis:6379", "-rate=250"]
+    depends_on:
       - redis
 
   redis:
