@@ -27,7 +27,7 @@ class WebAPI < Sinatra::Base
   end
 
   get '/rankings' do
-    cache_control :public, max_age: 10  # this needs to be pretty fresh :-/
+    cache_control :public, max_age: 10
 
     raw_scores = REDIS.zrevrange('emojitrack_score', 0, -1, { withscores: true } )
     @scores = raw_scores.map do |score|
