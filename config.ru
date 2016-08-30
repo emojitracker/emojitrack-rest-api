@@ -22,5 +22,6 @@ use Rack::Deflater
 REDIS = Redis.new()
 
 require "./web_api"
+require "./web_admin"
 map('/api/v1/') { run WebAPI }
-#TODO: load endpoints for old admin interface?
+map('/admin/')  { run WebAdmin }
