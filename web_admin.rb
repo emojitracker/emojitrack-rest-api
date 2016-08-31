@@ -31,6 +31,10 @@ class WebAdmin < Sinatra::Base
   #   slim :stream_admin
   # end
 
+  before do
+    headers("Access-Control-Allow-Origin" => "*" )
+  end
+
   get '/streamers/status.json' do
     content_type :json
     Oj.dump AdminUtils.rollup_stream_status
