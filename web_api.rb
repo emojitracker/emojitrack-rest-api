@@ -53,4 +53,17 @@ class WebAPI < Sinatra::Base
     )
   end
 
+  get '/status' do
+    content_type :json
+    begin
+      raise "Unexpected response" if REDIS.ping != "PONG"
+    rescue Exception => e
+      status 500
+      Oj.dump({"error" => "Error communicating with database."})
+    else
+      status 200
+      Oj.dump({"ok" => true})
+    end
+  end
+
 end

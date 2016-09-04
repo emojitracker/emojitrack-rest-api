@@ -29,6 +29,13 @@ Returns the details of a particular emoji, including a small number of the
 most recent [ensmallened](#) tweets.
 [Sample response](http://emojitracker.com/api/details/2665)
 
+#### `GET /v1/status`
+Returns the status of the API server, for healthcheck monitoring.
+
+When healthy, the response will be JSON `{"ok": true}` with a HTTP response code of 200.
+If the server can respond while unhealthy, the response will be `{"error": $REASON}` with a
+non-200 HTTP response code.
+
 ...more docs to come.
 
 ### Development Setup

@@ -13,4 +13,7 @@ RUN bundle install
 
 COPY . /usr/src/app
 
+ENV PORT 8000
+HEALTHCHECK CMD curl --fail http://127.0.0.1:$PORT/api/v1/status || exit 1
+
 CMD bundle exec puma -C config/puma.rb
