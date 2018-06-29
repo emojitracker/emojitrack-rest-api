@@ -1,5 +1,5 @@
-FROM ruby:2.5.1
-MAINTAINER Matthew Rothenberg <mroth@mroth.info>
+FROM ruby:2.5-alpine
+RUN apk --no-cache add curl alpine-sdk
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
