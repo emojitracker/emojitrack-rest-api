@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.5.1
 MAINTAINER Matthew Rothenberg <mroth@mroth.info>
 
 # throw errors if Gemfile has been modified since Gemfile.lock

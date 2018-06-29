@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.5.1'
 
 group :api do
   gem 'redis', '~> 3.0.7'
