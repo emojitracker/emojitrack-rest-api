@@ -1,0 +1,20 @@
+{
+  "addons": [
+    "memcachier:dev"
+  ],
+  "env": {
+    "REDIS_URL": {
+      "description": "URL for the production redis server",
+      "required": "true"
+    },
+    "RACK_ENV": {
+      "value": "production"
+    },
+    "NEW_RELIC_APP_NAME": {
+      "value": "emojitrack-rest-api"
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": "true"
+    }
+  }
+}
