@@ -5,20 +5,22 @@ GEM
     emoji_data (0.2.0)
     hiredis (0.6.1)
     kgio (2.10.0)
+    mustermann (1.0.2)
     newrelic_rpm (3.16.2.321)
-    puma (3.6.0)
-    rack (1.6.4)
-    rack-cache (1.6.1)
     oj (3.6.3)
+    puma (3.11.4)
+    rack (2.0.5)
+    rack-cache (1.8.0)
       rack (>= 0.4)
-    rack-protection (1.5.3)
+    rack-protection (2.0.3)
       rack
     redis (3.0.7)
-    sinatra (1.4.7)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
-    tilt (2.0.5)
+    sinatra (2.0.3)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.3)
+      tilt (~> 2.0)
+    tilt (2.0.8)
 
 PLATFORMS
   ruby
@@ -29,11 +31,11 @@ DEPENDENCIES
   hiredis (~> 0.6.0)
   kgio (~> 2.10.0)
   newrelic_rpm
-  puma (~> 3.6.0)
-  rack-cache (~> 1.6.1)
   oj (~> 3.6.3)
+  puma (~> 3.11.4)
+  rack-cache (~> 1.8.0)
   redis (~> 3.0.7)
-  sinatra (~> 1.4.6)
+  sinatra (~> 2.0.3)
 
 RUBY VERSION
    ruby 2.5.1p57

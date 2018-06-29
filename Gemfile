@@ -7,11 +7,11 @@ group :api do
   gem 'oj', '~> 3.6.3'
   gem 'emoji_data', '~> 0.2.0'
 
-  gem 'sinatra', '~> 1.4.6'
-  gem 'puma', '~> 3.6.0'
+  gem 'sinatra', '~> 2.0.3'
+  gem 'puma', '~> 3.11.4'
   gem 'dalli', '~> 2.7.4'
   gem 'kgio', '~> 2.10.0'
-  gem 'rack-cache', '~> 1.6.1'
+  gem 'rack-cache', '~> 1.8.0'
 end
 
 group :production do
