@@ -1,5 +1,5 @@
 FROM ruby:2.5-alpine
-RUN apk --no-cache add curl alpine-sdk
+RUN apk --no-cache add curl
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
@@ -9,7 +9,10 @@ WORKDIR /usr/src/app
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-RUN bundle install
+
+RUN apk --no-cache add build-base && \
+    bundle install && \
+    apk del build-base
 
 COPY . /usr/src/app
 
