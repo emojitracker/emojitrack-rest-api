@@ -9,8 +9,7 @@ group :api do
 
   gem 'sinatra', '~> 2.0.3'
   gem 'puma', '~> 3.11.4'
-  gem 'dalli', '~> 2.7.4'
-  gem 'kgio', '~> 2.10.0'
+  gem 'dalli', '~> 2.7.8'
   gem 'rack-cache', '~> 1.8.0'
 end
 
