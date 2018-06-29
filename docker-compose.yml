@@ -23,7 +23,7 @@ services:
       - redis
 
   redis:
-    image: redis
+    image: redis:alpine
 
   memcache:
     image: memcached:alpine
