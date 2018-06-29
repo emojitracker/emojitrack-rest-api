@@ -23,5 +23,7 @@ REDIS = Redis.new(:driver => :hiredis)
 
 require "./web_api"
 require "./web_admin"
-map('/api/v1/') { run WebAPI }
+# the core REST API, versioned
+map('/v1/')     { run WebAPI }
+# API endpoints to handle status reporting for admin functions, no version guarantees
 map('/admin/')  { run WebAdmin }
