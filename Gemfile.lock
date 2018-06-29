@@ -5,7 +5,7 @@ GEM
     emoji_data (0.2.0)
     hiredis (0.6.1)
     mustermann (1.0.2)
-    newrelic_rpm (3.16.2.321)
+    newrelic_rpm (5.2.0.345)
     oj (3.6.3)
     puma (3.11.4)
     rack (2.0.5)
