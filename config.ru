@@ -19,7 +19,7 @@ end
 use Rack::Deflater
 
 # db setup -- checks for REDIS_URL by default, or fallback to localhost
-REDIS = Redis.new()
+REDIS = Redis.new(:driver => :hiredis)
 
 require "./web_api"
 require "./web_admin"

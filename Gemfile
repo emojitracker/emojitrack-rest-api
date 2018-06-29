@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 
 group :api do
-  gem 'redis', '~> 3.0.7'
-  gem 'hiredis', '~> 0.6.0'
+  gem 'redis', '~> 4.0.1'
+  gem 'hiredis', '~> 0.6.1'
   gem 'oj', '~> 3.6.3'
   gem 'emoji_data', '~> 0.2.0'
 
