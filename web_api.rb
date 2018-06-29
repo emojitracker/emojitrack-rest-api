@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'dalli'
 require 'rack-cache'
 require 'oj'
 require 'emoji_data'
