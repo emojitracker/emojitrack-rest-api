@@ -6,10 +6,10 @@ GEM
     hiredis (0.6.1)
     kgio (2.10.0)
     newrelic_rpm (3.16.2.321)
-    oj (2.17.3)
     puma (3.6.0)
     rack (1.6.4)
     rack-cache (1.6.1)
+    oj (3.6.3)
       rack (>= 0.4)
     rack-protection (1.5.3)
       rack
@@ -29,9 +29,9 @@ DEPENDENCIES
   hiredis (~> 0.6.0)
   kgio (~> 2.10.0)
   newrelic_rpm
-  oj (~> 2.17.3)
   puma (~> 3.6.0)
   rack-cache (~> 1.6.1)
+  oj (~> 3.6.3)
   redis (~> 3.0.7)
   sinatra (~> 1.4.6)
 
