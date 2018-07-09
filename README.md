@@ -35,9 +35,40 @@ without a version change.
 
 #### `GET /v1/rankings`
 
-Returns every emoji in ranked order with scores.
+Returns an array of every emoji in ranked order with scores.
 
+```json
+[
+  {
+    "char": "😂",
+    "id": "1F602",
+    "name": "FACE WITH TEARS OF JOY",
+    "score": 2115292875
+  },
+  {
+    "char": "❤️",
+    "id": "2764",
+    "name": "HEAVY BLACK HEART",
+    "score": 1003931618
+  },
+  {
+    "char": "♻️",
+    "id": "267B",
+    "name": "BLACK UNIVERSAL RECYCLING SYMBOL",
+    "score": 903324343
+  },
+  /* ...snip... */
+  {
+    "char": "🚡",
+    "id": "1F6A1",
+    "name": "AERIAL TRAMWAY",
+    "score": 126832
+  }
+]
+```
 [Sample response](https://api.emojitracker.com/v1/rankings)
+
+
 
 #### `GET /v1/details/:id`
 
