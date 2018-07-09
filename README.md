@@ -122,6 +122,10 @@ When healthy, the response will be JSON `{"ok": true}` with a HTTP response code
 If the server can respond while unhealthy, the response will be `{"error": $REASON}` with a
 non-200 HTTP response code.
 
+```json
+{"ok":true}
+```
+
 [Sample response](https://api.emojitracker.com/v1/status)
 
 _...more docs to come._
