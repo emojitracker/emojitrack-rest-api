@@ -18,10 +18,17 @@ class WebAPI < Sinatra::Base
     @emoji_tweets_json = @emoji_tweets.map! {|t| Oj.load(t)}
     content_type :json
     Oj.dump( {
-      'char' => @emoji_char.char({variant_encoding: true}),
-      'char_details' => @emoji_char,
-      'popularity_rank' => @emoji_char_rank,
-      'recent_tweets' => @emoji_tweets_json
+      "char" => @emoji_char.char({variant_encoding: true}),
+      "name" => @emoji_char.name,
+      "id"   => @emoji_char.unified,
+      "details" => {
+        "variations"  => @emoji_char.variations,
+        "short_name"  => @emoji_char.short_name,
+        "short_names" => @emoji_char.short_names,
+        "text"        => @emoji_char.text,
+      },
+      "popularity_rank" => @emoji_char_rank,
+      "recent_tweets"   => @emoji_tweets_json
     })
   end
 
