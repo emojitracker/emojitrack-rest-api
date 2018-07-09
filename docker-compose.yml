@@ -18,7 +18,7 @@ services:
 
   feeder:
     image: emojitracker/fakefeeder
-    command: ["-target=redis://redis:6379", "-rate=250"]
+    command: ["-target=redis://redis:6379", "-rate=10"]
     depends_on:
       - redis
 
