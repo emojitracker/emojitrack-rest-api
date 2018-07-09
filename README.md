@@ -57,7 +57,7 @@ Returns an array of every emoji in ranked order with scores.
     "name": "BLACK UNIVERSAL RECYCLING SYMBOL",
     "score": 903324343
   },
-  /* ...snip... */
+  /*...snip...*/
   {
     "char": "🚡",
     "id": "1F6A1",
@@ -66,6 +66,7 @@ Returns an array of every emoji in ranked order with scores.
   }
 ]
 ```
+
 [Sample response](https://api.emojitracker.com/v1/rankings)
 
 
@@ -74,6 +75,42 @@ Returns an array of every emoji in ranked order with scores.
 
 Returns the details of a particular emoji, including a small number of the
 most recent [ensmallened](#) tweets.
+
+```json
+{
+  "char": "🚀",
+  "name": "ROCKET",
+  "id": "1F680",
+  "details": {
+    "variations": [],
+    "short_name": "rocket",
+    "short_names": [
+      "rocket"
+    ],
+    "text": null
+  },
+  "popularity_rank": 195,
+  "recent_tweets": [
+    /*...snip...*/
+    {
+      "id": "1016150995573895168",
+      "text": "Let’s do Launch 🚀 spectacular Pre-dawn Launch from my home base Vandenberg AFB https://t.co/FR0UBanW4o",
+      "screen_name": "do_launch",
+      "name": "Lets do Launch",
+      "links": [
+        {
+          "url": "https://t.co/FR0UBanW4o",
+          "display_url": "spacearchive.info",
+          "expanded_url": "http://www.spacearchive.info/",
+          "indices": [79, 102]
+        }
+      ],
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1004223593033580544/jYKWIYr9_normal.jpg",
+      "created_at": "2018-07-09T02:44:11+00:00"
+    }
+  ]
+}
+```
 
 [Sample response](https://api.emojitracker.com/v1/details/2665)
 
