@@ -1,12 +1,11 @@
-require 'rack-cache'
-require 'dalli'
-require 'redis'
+require "rack-cache"
+require "dalli"
+require "redis"
 
-
-if memcache_servers = ENV['MEMCACHIER_SERVERS']
-  cache = Dalli::Client.new memcache_servers.split(','), {
-    username: ENV['MEMCACHIER_USERNAME'],
-    password: ENV['MEMCACHIER_PASSWORD']
+if memcache_servers = ENV["MEMCACHIER_SERVERS"]
+  cache = Dalli::Client.new memcache_servers.split(","), {
+    username: ENV["MEMCACHIER_USERNAME"],
+    password: ENV["MEMCACHIER_PASSWORD"],
   }
 
   use Rack::Cache,
@@ -24,6 +23,6 @@ REDIS = Redis.new(:driver => :hiredis)
 require "./web_api"
 require "./web_admin"
 # the core REST API, versioned
-map('/v1/')     { run WebAPI }
+map("/v1/") { run WebAPI }
 # API endpoints to handle status reporting for admin functions, no version guarantees
-map('/admin/')  { run WebAdmin }
+map("/admin/") { run WebAdmin }
