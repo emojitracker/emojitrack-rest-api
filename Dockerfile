@@ -11,7 +11,7 @@ COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
 
 RUN apk --no-cache add build-base && \
-    bundle install && \
+    bundle install --without development test && \
     apk del build-base
 
 COPY . /usr/src/app

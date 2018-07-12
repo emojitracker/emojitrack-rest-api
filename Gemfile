@@ -15,6 +15,13 @@ end
 
 group :development do
   gem "rufo", "~> 0.3.1"
+  gem "solargraph", "~> 0.23.4"
+  gem "fasterer", "~> 0.4.1"
+end
+
+group :test do
+  gem "rack-test", "~> 1.0.0"
+  gem "mocha", "~> 1.5.0"
 end
 
 group :production do

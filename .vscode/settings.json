@@ -1,0 +1,11 @@
+{
+    "ruby.lint": {
+        "rubocop": true,
+        "fasterer": true
+    },
+    "ruby.lintDebounceTime": 500,
+    // disable because solargraph provides
+    "ruby.intellisense": false,
+    // disable because rufo provides
+    "ruby.format": false
+}
