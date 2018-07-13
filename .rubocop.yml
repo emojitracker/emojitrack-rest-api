@@ -3,3 +3,8 @@ Style:
   Enabled: false
 Layout:
   Enabled: false
+
+# dont bother with test files
+AllCops:
+  Exclude:
+    - "spec/**/*"

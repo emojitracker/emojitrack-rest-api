@@ -18,7 +18,12 @@ class WebAdmin < Sinatra::Base
       nodes.map! { |n| Oj.load(n) }
 
       #consider values stale if greater than 10x report period
-      nodes.reject! { |n| Time.now.to_i - n["reported_at"] > STREAM_STATUS_UPDATE_RATE * 10 } if filter
+      if filter
+        nodes.reject! { |n|
+          Time.now.to_i - n["reported_at"] > STREAM_STATUS_UPDATE_RATE * 10
+        }
+      end
+
       #TODO: potentially clear these from REDIS entirely when we detect?
 
       return nodes
@@ -26,10 +31,6 @@ class WebAdmin < Sinatra::Base
   end
 
   helpers AdminUtils
-
-  # get '/?' do
-  #   slim :stream_admin
-  # end
 
   before do
     headers("Access-Control-Allow-Origin" => "*")

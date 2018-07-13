@@ -24,5 +24,5 @@ require "./web_api"
 require "./web_admin"
 # the core REST API, versioned
 map("/v1/") { run WebAPI }
-# API endpoints to handle status reporting for admin functions, no version guarantees
+# API endpoints to handle status reporting for admin, no version guarantees
 map("/admin/") { run WebAdmin }
