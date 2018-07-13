@@ -5,6 +5,8 @@ This is the main API endpoint for the Emojitracker REST API.
 _(Note: in active development! You may wish to wait for a tagged `v1.0` release
 before assuming everything is stable.)_
 
+
+[![Travis Build Status](https://img.shields.io/travis/emojitracker/emojitrack-rest-api.svg?style=flat-square)](https://travis-ci.org/emojitracker/emojitrack-rest-api)
 [![Docker Build Status](https://img.shields.io/docker/build/emojitracker/rest-api.svg?style=flat-square)](https://hub.docker.com/r/emojitracker/rest-api/)
 
 ## REST API Specifications

@@ -1,3 +1,8 @@
+.PHONY: test lint
+
+test:
+	bundle exec ruby spec/api_spec.rb
+
 lint-fasterer:
 	bundle exec fasterer
 
