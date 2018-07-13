@@ -21,6 +21,8 @@ end
 
 group :test do
   gem "rack-test", "~> 1.0.0"
+  gem "minitest", "~> 5.11.3"
+  gem "minitest-reporters", "~> 1.3.0"
   gem "mocha", "~> 1.5.0"
 end
 

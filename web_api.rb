@@ -6,16 +6,27 @@ require "emoji_data"
 class WebAPI < Sinatra::Base
   before do
     headers("Access-Control-Allow-Origin" => "*")
+    content_type :json
   end
 
-  get "/details/:char" do
+  def fetch_details(id)
+    emoji_char_rank = REDIS.ZREVRANK("emojitrack_score", id).to_i + 1
+    emoji_tweets = REDIS.LRANGE("emojitrack_tweets_#{id}", 0, 9)
+    return [emoji_char_rank, emoji_tweets]
+  end
+
+  def fetch_scores
+    REDIS.zrevrange("emojitrack_score", 0, -1, {withscores: true})
+  end
+
+  get "/details/:id" do
     cache_control :public, max_age: 30
 
-    emoji_char = EmojiData.find_by_unified(params[:char])
-    emoji_char_rank = REDIS.ZREVRANK("emojitrack_score", emoji_char.unified).to_i + 1
-    emoji_tweets = REDIS.LRANGE("emojitrack_tweets_#{emoji_char.unified}", 0, 9)
+    emoji_char = EmojiData.find_by_unified(params[:id])
+    # TODO: handle invalid ID
+    emoji_char_rank, emoji_tweets = fetch_details(params[:id])
     emoji_tweets_json = emoji_tweets.map! { |t| Oj.load(t) }
-    
+
     details = {
       "char" => emoji_char.char({variant_encoding: true}),
       "name" => emoji_char.name,
@@ -30,14 +41,13 @@ class WebAPI < Sinatra::Base
       "recent_tweets" => emoji_tweets_json,
     }
 
-    content_type :json
     Oj.dump(details)
   end
 
   get "/rankings" do
     cache_control :public, max_age: 10
 
-    raw_scores = REDIS.zrevrange("emojitrack_score", 0, -1, {withscores: true})
+    raw_scores = fetch_scores()
     scores = raw_scores.map do |score|
       emo_obj = EmojiData.find_by_unified(score[0])
       {
@@ -48,20 +58,15 @@ class WebAPI < Sinatra::Base
       }
     end
 
-    content_type :json
     Oj.dump(scores)
   end
 
   get "/stats" do
-    raw_score = REDIS.zrevrange("emojitrack_score", 0, -1, {withscores: true})
-                      .map { |s| s[1] }
-                      .inject(:+)
-                      .to_i
+    raw_score = fetch_scores().map { |s| s[1] }.inject(:+).to_i
     Oj.dump({"raw_score" => raw_score})
   end
 
   get "/status" do
-    content_type :json
     begin
       raise "Unexpected response" if REDIS.ping != "PONG"
     rescue Exception => e
