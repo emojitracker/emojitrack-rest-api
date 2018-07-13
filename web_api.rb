@@ -5,6 +5,11 @@ require "oj"
 require "emoji_data"
 
 class WebAPI < Sinatra::Base
+  configure do
+    set :raise_errors, false
+    set :show_exceptions, false
+  end
+
   before do
     headers("Access-Control-Allow-Origin" => "*")
     content_type :json
@@ -29,7 +34,9 @@ class WebAPI < Sinatra::Base
     cache_control :public, max_age: 30
 
     emoji_char = EmojiData.find_by_unified(params[:id])
-    # TODO: handle invalid ID
+    if emoji_char.nil?
+      halt 404, Oj.dump("error" => "id not found")
+    end
     emoji_score, emoji_rank, emoji_tweets = fetch_details(params[:id])
     emoji_tweets_json = emoji_tweets.map! { |t| Oj.load(t) }
 
@@ -83,5 +90,13 @@ class WebAPI < Sinatra::Base
       status 200
       Oj.dump({"ok" => true})
     end
+  end
+
+  error 404 do
+    Oj.dump({"error" => "404 Not Found"})
+  end
+
+  error 500 do
+    Oj.dump({"error" => "Internal Server Error"})
   end
 end
