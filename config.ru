@@ -2,7 +2,7 @@ require "rack-cache"
 require "dalli"
 require "redis"
 
-if memcache_servers = ENV["MEMCACHIER_SERVERS"]
+if (memcache_servers = ENV["MEMCACHIER_SERVERS"])
   cache = Dalli::Client.new memcache_servers.split(","), {
     username: ENV["MEMCACHIER_USERNAME"],
     password: ENV["MEMCACHIER_PASSWORD"],
