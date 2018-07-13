@@ -10,9 +10,14 @@ class WebAPI < Sinatra::Base
   end
 
   def fetch_details(id)
-    emoji_char_rank = REDIS.ZREVRANK("emojitrack_score", id).to_i + 1
-    emoji_tweets = REDIS.LRANGE("emojitrack_tweets_#{id}", 0, 9)
-    return [emoji_char_rank, emoji_tweets]
+    REDIS.pipelined do
+      @emoji_score = REDIS.ZSCORE("emojitrack_score", id)
+      @emoji_rank = REDIS.ZREVRANK("emojitrack_score", id)
+      @emoji_tweets = REDIS.LRANGE("emojitrack_tweets_#{id}", 0, 9)
+    end
+    return @emoji_score.value.to_i,
+           @emoji_rank.value.to_i + 1,
+           @emoji_tweets.value
   end
 
   def fetch_scores
@@ -24,20 +29,21 @@ class WebAPI < Sinatra::Base
 
     emoji_char = EmojiData.find_by_unified(params[:id])
     # TODO: handle invalid ID
-    emoji_char_rank, emoji_tweets = fetch_details(params[:id])
+    emoji_score, emoji_rank, emoji_tweets = fetch_details(params[:id])
     emoji_tweets_json = emoji_tweets.map! { |t| Oj.load(t) }
 
     details = {
       "char" => emoji_char.char({variant_encoding: true}),
       "name" => emoji_char.name,
       "id" => emoji_char.unified,
+      "score" => emoji_score,
+      "popularity_rank" => emoji_rank,
       "details" => {
         "variations" => emoji_char.variations,
         "short_name" => emoji_char.short_name,
         "short_names" => emoji_char.short_names,
         "text" => emoji_char.text,
       },
-      "popularity_rank" => emoji_char_rank,
       "recent_tweets" => emoji_tweets_json,
     }
 

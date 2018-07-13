@@ -48,7 +48,7 @@ class ApiSpec < Minitest::Spec
 
   describe "GET /details/:id" do
     before do
-      app.any_instance.stubs(:fetch_details).returns([16, TWEETS_SNAPSHOT.clone])
+      app.any_instance.stubs(:fetch_details).returns([123456789, 16, TWEETS_SNAPSHOT.clone])
       get "/details/1F680"
     end
 
@@ -67,7 +67,7 @@ class ApiSpec < Minitest::Spec
         assert false
       end
 
-      assert details.keys == ["char", "name", "id", "details", "popularity_rank", "recent_tweets"],
+      assert details.keys == ["char", "name", "id", "score", "popularity_rank", "details", "recent_tweets"],
         "response objects contain unexpected keys"
     end
   end

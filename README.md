@@ -84,6 +84,8 @@ most recent [ensmallened](#) tweets.
   "char": "🚀",
   "name": "ROCKET",
   "id": "1F680",
+  "score": 14796152,
+  "popularity_rank": 195,
   "details": {
     "variations": [],
     "short_name": "rocket",
@@ -92,7 +94,6 @@ most recent [ensmallened](#) tweets.
     ],
     "text": null
   },
-  "popularity_rank": 195,
   "recent_tweets": [
     /*...snip...*/
     {
