@@ -27,7 +27,7 @@ class ApiSpec < Minitest::Spec
       last_response.content_type.must_equal "application/json"
     end
 
-    it "should be contain properly formatted data" do
+    it "should contain properly formatted data" do
       app.any_instance.stubs(:fetch_scores).returns(SCORES_SNAPSHOT)
       get "/rankings"
       begin
@@ -60,7 +60,7 @@ class ApiSpec < Minitest::Spec
       last_response.content_type.must_equal "application/json"
     end
 
-    it "should be contain properly formatted data" do
+    it "should contain properly formatted data" do
       begin
         details = JSON.parse(last_response.body)
       rescue JSON::ParserError
