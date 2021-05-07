@@ -79,7 +79,7 @@ GEM
     thor (0.20.0)
     tilt (2.0.8)
     unicode-display_width (1.4.0)
-    yard (0.9.14)
+    yard (0.9.26)
 
 PLATFORMS
   ruby
