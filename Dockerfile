@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.7-alpine
 RUN apk --no-cache add curl
 
 # throw errors if Gemfile has been modified since Gemfile.lock
