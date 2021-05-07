@@ -16,7 +16,7 @@ end
 group :development do
   gem "fasterer", "~> 0.4.1"
   gem "rufo", "~> 0.3.1"
-  gem "solargraph", "~> 0.23.4"
+  gem "solargraph", "~> 0.40.4"
 end
 
 group :test do
