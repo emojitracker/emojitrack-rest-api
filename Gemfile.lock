@@ -31,7 +31,7 @@ GEM
       metaclass (~> 0.0.1)
     mustermann (1.0.2)
     newrelic_rpm (5.2.0.345)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     oj (3.6.3)
