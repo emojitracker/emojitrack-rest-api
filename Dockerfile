@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7.3-alpine
 RUN apk --no-cache add curl
 
 # throw errors if Gemfile has been modified since Gemfile.lock
@@ -11,7 +11,8 @@ COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
 
 RUN apk --no-cache add build-base && \
-    bundle install --without development test && \
+    bundle config set without 'development test' && \
+    bundle install && \
     apk del build-base
 
 COPY . /usr/src/app
