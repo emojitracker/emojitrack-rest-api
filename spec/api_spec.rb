@@ -67,7 +67,7 @@ class ApiSpec < Minitest::Spec
         assert false
       end
 
-      assert details.keys == ["char", "name", "id", "score", "popularity_rank", "details", "recent_tweets"],
+      assert details.keys == ["char", "name", "id", "score", "popularity_rank", "meaning", "details", "recent_tweets"],
         "response objects contain unexpected keys"
     end
   end

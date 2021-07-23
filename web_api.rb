@@ -3,6 +3,10 @@ require "sinatra/base"
 require "rack-cache"
 require "oj"
 require "emoji_data"
+require "net/http"
+require "json"
+require "erb"
+include ERB::Util
 
 class WebAPI < Sinatra::Base
   configure do
@@ -30,6 +34,28 @@ class WebAPI < Sinatra::Base
     REDIS.zrevrange("emojitrack_score", 0, -1, {withscores: true})
   end
 
+  def fetch_meaning(id, char)
+    meaning = REDIS.GET("emojitrack_meaning_#{id}")
+    if meaning.nil?
+      encoded_char = url_encode char
+      url = "https://api.emojipedia.org/emojis/#{encoded_char}/?api_key=#{ENV['EMOJIPEDIA_API_KEY']}&format=json"
+      uri = URI(url)
+      begin
+        response = Net::HTTP.get(uri)
+        response = JSON.parse(response)
+        meaning = response["description"]
+      rescue
+        # bad practice to rescue from everything, but we discard
+        # anything anyway, if any error happened above
+      else
+        # cache response for five minutes
+        REDIS.SET("emojitrack_meaning_#{id}", meaning)
+        REDIS.EXPIRE("emojitrack_meaning_#{id}", 300)
+      end
+    end
+    return meaning
+  end
+
   get "/details/:id" do
     cache_control :public, max_age: 30
 
@@ -39,6 +65,7 @@ class WebAPI < Sinatra::Base
     end
     emoji_score, emoji_rank, emoji_tweets = fetch_details(params[:id])
     emoji_tweets_json = emoji_tweets.map! { |t| Oj.load(t) }
+    emoji_meaning = fetch_meaning(params[:id], emoji_char.char({variant_encoding: true}))
 
     details = {
       "char" => emoji_char.char({variant_encoding: true}),
@@ -46,6 +73,7 @@ class WebAPI < Sinatra::Base
       "id" => emoji_char.unified,
       "score" => emoji_score,
       "popularity_rank" => emoji_rank,
+      "meaning" => emoji_meaning,
       "details" => {
         "variations" => emoji_char.variations,
         "short_name" => emoji_char.short_name,
