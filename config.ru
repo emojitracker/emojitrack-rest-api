@@ -21,8 +21,9 @@ use Rack::Deflater
 REDIS = Redis.new(:driver => :hiredis)
 
 require "./web_api"
-require "./web_admin"
+#require "./web_admin"
 # the core REST API, versioned
 map("/v1/") { run WebAPI }
 # API endpoints to handle status reporting for admin, no version guarantees
-map("/admin/") { run WebAdmin }
+# Currently commented out for privacy reasons
+#map("/admin/") { run WebAdmin }
