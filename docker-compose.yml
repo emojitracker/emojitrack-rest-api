@@ -12,6 +12,7 @@ services:
       - RACK_ENV=development
       - MEMCACHIER_SERVERS=memcache
       - REDIS_URL=redis://redis:6379
+      - "EMOJIPEDIA_API_KEY=${EMOJIPEDIA_API_KEY}"
     depends_on:
       - memcache
       - redis
