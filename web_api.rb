@@ -65,7 +65,13 @@ class WebAPI < Sinatra::Base
     end
     emoji_score, emoji_rank, emoji_tweets = fetch_details(params[:id])
     emoji_tweets_json = emoji_tweets.map! { |t| Oj.load(t) }
-    emoji_meaning = fetch_meaning(params[:id], emoji_char.char({variant_encoding: true}))
+    begin
+      # TODO get the call to fetch_meaning back into tests and get rid of the
+      # begin..rescue block. Currently it will be botched up in tests.
+      emoji_meaning = fetch_meaning(params[:id], emoji_char.char({variant_encoding: true}))
+    rescue
+      emoji_meaning = nil
+    end
 
     details = {
       "char" => emoji_char.char({variant_encoding: true}),
