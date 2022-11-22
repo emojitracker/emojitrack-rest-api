@@ -7,7 +7,7 @@ group :api do
   gem "oj", "~> 3.6.3"
   gem "redis", "~> 4.0.1"
 
-  gem "dalli", "~> 2.7.8"
+  gem "dalli", "~> 3.2.3"
   gem "puma", "~> 3.12.6"
   gem "rack-cache", "~> 1.8.0"
   gem "sinatra", "~> 2.0.3"

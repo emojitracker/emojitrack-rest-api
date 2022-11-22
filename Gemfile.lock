@@ -7,7 +7,7 @@ GEM
     benchmark (0.1.1)
     builder (3.2.3)
     colorize (0.8.1)
-    dalli (2.7.8)
+    dalli (3.2.3)
     e2mmap (0.1.0)
     emoji_data (0.2.0)
     fasterer (0.4.1)
@@ -97,7 +97,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  dalli (~> 2.7.8)
+  dalli (~> 3.2.3)
   emoji_data (~> 0.2.0)
   fasterer (~> 0.4.1)
   hiredis (~> 0.6.1)
