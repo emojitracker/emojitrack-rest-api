@@ -10,7 +10,7 @@ group :api do
   gem "dalli", "~> 2.7.8"
   gem "puma", "~> 3.12.6"
   gem "rack-cache", "~> 1.8.0"
-  gem "sinatra", "~> 2.0.3"
+  gem "sinatra", "~> 2.2.3"
 end
 
 group :development do
