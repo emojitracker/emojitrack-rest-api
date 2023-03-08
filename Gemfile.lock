@@ -40,7 +40,7 @@ GEM
       ast (~> 2.4.1)
     puma (3.12.6)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.6.3)
     rack-cache (1.8.0)
       rack (>= 0.4)
     rack-protection (2.0.3)
